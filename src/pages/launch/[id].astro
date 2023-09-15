@@ -1,0 +1,32 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import { getLaunchById, getLastLaunches } from "../../services/spacex";
+
+// Funcionaria en el servidor 
+export const prerender = false
+
+let launch
+const { id } = Astro.params;
+
+if(id){
+  launch = await getLaunchById({id})
+}
+
+
+// export async function getStaticPaths() {
+//   // Call external api
+//   // and recovery all Ids
+
+//   const launches = await getLastLaunches()
+
+//   return launches.map(launch => ({
+//     params: {id: launch.id}
+//   }))
+// }
+---
+
+
+<Layout title='MoneyMachine'>
+  {id}
+  <img src={launch.links.patch.small} alt="" srcset="">
+</Layout>
